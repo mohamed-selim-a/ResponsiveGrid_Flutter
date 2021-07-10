@@ -152,6 +152,8 @@ class ResponsiveGridList extends StatelessWidget {
   final List<Widget> children;
   final bool squareCells, scroll;
   final MainAxisAlignment rowMainAxisAlignment;
+  final bool shrinkWrap;
+
 
   ResponsiveGridList({
     required this.desiredItemWidth,
@@ -160,6 +162,7 @@ class ResponsiveGridList extends StatelessWidget {
     this.scroll = true,
     required this.children,
     this.rowMainAxisAlignment = MainAxisAlignment.start,
+    this.shrinkWrap = false,
   });
 
   @override
@@ -193,6 +196,7 @@ class ResponsiveGridList extends StatelessWidget {
 
         if (scroll) {
           return ListView.builder(
+              shrinkWrap: shrinkWrap,
               itemCount: (children.length / n).ceil() * 2 - 1,
               itemBuilder: (context, index) {
                 //if (index * n >= children.length) return null;
